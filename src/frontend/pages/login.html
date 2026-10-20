@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园兼职招聘管理系统 - 登录</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <div class="login-box">
+        <h2>校园兼职招聘管理系统</h2>
+        <form id="loginForm" onsubmit="return validateLogin();">
+            <div class="field">
+                <label>用户名</label>
+                <input type="text" id="username" name="username" placeholder="请输入用户名">
+            </div>
+            <div class="field">
+                <label>密码</label>
+                <input type="password" id="password" name="password" placeholder="请输入密码">
+            </div>
+            <div class="field">
+                <label>角色</label>
+                <select id="role" name="role">
+                    <option value="student">学生</option>
+                    <option value="employer">商家</option>
+                    <option value="admin">管理员</option>
+                </select>
+            </div>
+            <p id="msg" class="msg"></p>
+            <button type="submit" class="btn">登 录</button>
+        </form>
+    </div>
+    <script src="../js/login.js"></script>
+</body>
+</html>
