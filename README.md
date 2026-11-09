@@ -1,57 +1,55 @@
 # 校园兼职招聘管理系统
 
-## 项目简介
+互联网应用服务开发与数据库实践 课程大作业
 
-校园兼职招聘管理系统是一个面向在校大学生的兼职信息管理平台，采用 B/S 三层架构（表现层 / 业务逻辑层 / 数据访问层）开发，面向**学生、商家、管理员**三类用户，提供兼职岗位发布、审核、检索、在线申请、录用评价等全流程功能。
+| 项目 | 内容 |
+|---|---|
+| 学号 / 姓名 | 241240048 / 黄潇萱 |
+| 班级 | 24034202 |
+| 任课教师 | 邢艳 |
+| 技术栈 | ASP.NET Web Forms（.NET Framework 4.7.2）+ C# 分层 + ADO.NET + SQL Server |
+| 数据库 | `CampusPartTime`（6 表 / 1 视图 / 3 存储过程 / 1 触发器） |
+| 提交记录 | 62 次规范提交（Conventional Commits） |
 
-- 课程：互联网应用服务开发与数据库实践（2024-2025 第一学期）
-- 班级 / 学号 / 姓名：24034202 / 241240048 / 黄潇萱
-- 任课教师：邢艳
-
-## 技术栈
-
-| 层级 | 技术 |
-| --- | --- |
-| 前端 | HTML / CSS / JavaScript（ASP.NET Web 窗体） |
-| 后端 | C# + ASP.NET（BLL / DAL 分层） |
-| 数据访问 | ADO.NET |
-| 数据库 | SQL Server 2019（库名 `CampusPartTime`） |
-
-## 标准目录结构
+## 目录结构
 
 ```
-校园兼职招聘管理系统/
-├── docs/report/          # 大作业报告初稿
-├── src/backend/          # 后端源码（BLL / DAL / Web）
-├── src/frontend/         # 前端资源（css / js / pages）
-├── database/             # 数据库脚本（建库建表 / 视图 / 存储过程 / 触发器）
-├── tests/                # 测试用例
-└── README.md
+campus-parttime-management/
+├─ database/                       # 数据库脚本
+│  ├─ CampusPartTime.sql           # 主脚本：建库、建表、索引、视图、存储过程、触发器、测试数据
+│  ├─ views/                       # 视图单项重建脚本
+│  ├─ procedures/                  # 存储过程单项重建脚本
+│  └─ triggers/                    # 触发器单项重建脚本
+├─ docs/
+│  ├─ report/                      # 系统设计报告分章 Markdown + 最终版 Word/PDF
+│  └─ deploy/                      # 部署与运行说明
+├─ src/
+│  ├─ backend/                     # ASP.NET Web 项目（BLL / DAL / Model / Common / 页面）
+│  └─ frontend/                    # 早期前端校验原型
+├─ tests/                          # 数据库脚本结构校验脚本
+└─ README.md
 ```
 
-## 项目状态
+## 快速开始
 
-- [x] 仓库初始化与标准目录结构
-- [x] 大作业报告初稿（20+ 次 Git 迭代完成）
-- [x] 数据库脚本（建库建表 / 视图 / 存储过程 / 触发器）
-- [x] 后端分层骨架（BLL / DAL / Web）
-- [x] 前端资源骨架（css / js / pages）
-- [ ] 后端业务逻辑实现
-- [ ] 前端页面实现
+1. **建库**：在 SQL Server Management Studio 中新建查询，执行 `database/CampusPartTime.sql`；
+2. **配置连接串**：打开 `src/backend/CampusPartTime/Web.config`，把 `connectionStrings` 中的
+   `__DB_SERVER__` / `__DB_NAME__` / `__DB_USER__` / `__DB_PASSWORD__` 换成实际值；
+3. **编译**：用 Visual Studio 打开 `src/backend/CampusPartTime.sln` 并生成；
+4. **部署**：将发布目录挂到 IIS，应用池 .NET CLR 版本选 v4.0，启用 32 位应用程序可选；
+5. **访问**：`http://localhost/Login.aspx`。
 
-## 使用与部署
+详细步骤见 `docs/deploy/README.md`。
 
-1. 执行 `database/CampusPartTime.sql` 建库建表；
-2. 依次执行 `database/views/`、`database/procedures/`、`database/triggers/` 下脚本创建视图 / 存储过程 / 触发器；
-3. 配置 Web.config 连接字符串后发布到 IIS；
-4. 详细步骤见 [大作业报告](docs/report/05-部署与运行说明.md)。
+## 功能概览
 
-## Git 提交规范
+| 角色 | 主要功能 |
+|---|---|
+| 学生 | 注册登录、岗位检索与筛选、岗位详情、提交申请、查看申请状态、评价商家 |
+| 商家 | 注册登录、发布岗位、岗位上下架与编辑、查看申请、录用 / 拒绝、查看评价 |
+| 管理员 | 商家与岗位审核、用户管理、申请与评价管理、数据统计 |
 
-本项目使用 Conventional Commits 规范前缀进行提交：
+## 提交规范
 
-- `feat:` 新增功能 / 代码
-- `docs:` 文档变更
-- `refactor:` 重构（不改变外部行为）
-- `test:` 测试相关
-- `chore:` 构建、杂项
+见 `COMMIT_CONVENTION.md`。本项目共 62 次提交，类型分布与完整链路见
+`docs/report/08-Git实践记录-最终版.md`。
