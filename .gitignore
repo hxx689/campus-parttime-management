@@ -32,3 +32,6 @@ Thumbs.db
 
 # 报告中间草稿（仅保留正式初稿）
 docs/report/*.tmp.md
+
+# NuGet 还原目录（第三方二进制不入库，clone 后由 NuGet restore 获取）
+src/backend/packages/
