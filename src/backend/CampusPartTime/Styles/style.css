@@ -1,0 +1,600 @@
+@charset "utf-8";
+/* ==========================================================================
+   校园兼职招聘管理系统 —— 全局样式表
+   依据《系统设计文档》1.4 界面设计规范实现：
+   主色 #2C6CB0，辅助色 #E8F0FB，页面底色 #F5F7FA，警示 #E74C3C，成功 #27AE60；
+   正文 #333333 / 辅助 #666666；标题 18px、16px 加粗，正文 14px，辅助 12px，行高 1.5；
+   中文字体微软雅黑，西文 Arial；内容区 1200px 居中，栅格间距 20px；
+   按钮高 40px 圆角 4px，导航栏高 56px 固定置顶，表单垂直间距 12px。
+   ========================================================================== */
+
+/* ------------------------------ 1. 基础重置 ------------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333333;
+    background-color: #F5F7FA;
+}
+
+a {
+    color: #2C6CB0;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: bold;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+/* ------------------------------ 2. 顶部导航 ------------------------------ */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background-color: #2C6CB0;
+    z-index: 100;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.nav-inner {
+    width: 1200px;
+    height: 56px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    display: inline-block;
+    margin-right: 40px;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.nav-inner a {
+    display: inline-block;
+    height: 56px;
+    line-height: 56px;
+    padding: 0 16px;
+    color: #E8F0FB;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.nav-inner a:hover {
+    background-color: #245A96;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.nav-inner a.active {
+    background-color: #245A96;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+/* ------------------------------ 3. 内容区与面板 ------------------------------ */
+.content {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 76px 0 40px 0; /* 76px = 导航栏 56px + 20px 间距 */
+}
+
+.panel {
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.panel-title {
+    margin-bottom: 16px;
+    padding-left: 10px;
+    border-left: 4px solid #2C6CB0;
+    color: #2C6CB0;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.section-title {
+    margin: 20px 0 12px 0;
+    color: #333333;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.panel-tip {
+    margin-bottom: 12px;
+    color: #666666;
+    font-size: 12px;
+}
+
+/* ------------------------------ 4. 按钮 ------------------------------ */
+.btn-primary,
+.btn-ghost {
+    display: inline-block;
+    height: 40px;
+    line-height: 38px;
+    padding: 0 20px;
+    font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.btn-primary {
+    color: #FFFFFF;
+    background-color: #2C6CB0;
+    border: 1px solid #2C6CB0;
+}
+
+.btn-primary:hover {
+    background-color: #245A96;
+    border-color: #245A96;
+}
+
+.btn-primary:disabled {
+    background-color: #A9C3E0;
+    border-color: #A9C3E0;
+    cursor: not-allowed;
+}
+
+.btn-ghost {
+    color: #2C6CB0;
+    background-color: #FFFFFF;
+    border: 1px solid #2C6CB0;
+}
+
+.btn-ghost:hover {
+    background-color: #E8F0FB;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-bar {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 表格内的文字操作按钮 */
+.link-btn {
+    display: inline-block;
+    margin-right: 8px;
+    color: #2C6CB0;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    border: 0;
+    background: none;
+    padding: 0;
+}
+
+.link-btn:hover {
+    text-decoration: underline;
+}
+
+.link-danger {
+    color: #E74C3C;
+}
+
+.link-disabled {
+    color: #999999;
+    cursor: default;
+    text-decoration: none;
+}
+
+/* ------------------------------ 5. 检索条与筛选条 ------------------------------ */
+.search-bar,
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 16px;
+    padding: 12px;
+    background-color: #F5F7FA;
+    border: 1px solid #E5EAF1;
+    border-radius: 4px;
+}
+
+.filter-bar label {
+    color: #666666;
+    font-size: 12px;
+}
+
+/* ------------------------------ 6. 表单 ------------------------------ */
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.form-table th {
+    width: 150px;
+    padding: 6px 12px 6px 0;
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: middle;
+    line-height: 40px; /* 与控件高度对齐，表单项垂直间距 12px */
+}
+
+.form-table td {
+    padding: 6px 0;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.form-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.form-row-wide {
+    display: block;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.required {
+    color: #E74C3C;
+    margin-right: 4px;
+}
+
+.form-hint,
+.field-tip {
+    margin-left: 8px;
+    color: #666666;
+    font-size: 12px;
+}
+
+/* 输入控件：统一高 40px，圆角 4px，获得焦点时主色描边 */
+.input-text,
+.input-select,
+.input-textarea,
+.input-file {
+    font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-size: 14px;
+    color: #333333;
+    border: 1px solid #D0D7E2;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    padding: 0 10px;
+}
+
+.input-text,
+.input-select {
+    height: 40px;
+    line-height: 38px;
+}
+
+.input-text {
+    width: 320px;
+}
+
+.input-short {
+    width: 150px;
+}
+
+.input-textarea {
+    width: 100%;
+    max-width: 640px;
+    padding: 8px 10px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.input-textarea.input-area {
+    min-height: 96px;
+}
+
+.input-file {
+    height: 40px;
+    line-height: 38px;
+    padding: 0 8px;
+    background-color: #FAFBFD;
+}
+
+.input-text:focus,
+.input-select:focus,
+.input-textarea:focus {
+    outline: none;
+    border-color: #2C6CB0;
+    box-shadow: 0 0 0 2px rgba(44, 108, 176, 0.12);
+}
+
+/* ------------------------------ 7. 数据表格 ------------------------------ */
+.grid,
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background-color: #FFFFFF;
+}
+
+.grid th,
+.detail-table th {
+    padding: 10px 8px;
+    background-color: #E8F0FB;
+    color: #2C6CB0;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+    border: 1px solid #DCE4EE;
+}
+
+.grid td,
+.detail-table td {
+    padding: 10px 8px;
+    color: #333333;
+    border: 1px solid #E5EAF1;
+    vertical-align: middle;
+}
+
+.grid tr:nth-child(even) td {
+    background-color: #FAFBFD;
+}
+
+.grid tr:hover td {
+    background-color: #F0F6FD;
+}
+
+.grid .grid-empty,
+.grid td[colspan] {
+    color: #666666;
+    text-align: center;
+    padding: 24px 8px;
+}
+
+.detail-table th {
+    width: 150px;
+    text-align: right;
+    white-space: normal;
+}
+
+/* ------------------------------ 8. 页签 ------------------------------ */
+.tabs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #E5EAF1;
+}
+
+.tab {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #666666;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    background: none;
+}
+
+.tab:hover {
+    color: #2C6CB0;
+    text-decoration: none;
+}
+
+.tab-active {
+    color: #2C6CB0;
+    font-weight: bold;
+    border-bottom: 2px solid #2C6CB0;
+    background-color: #E8F0FB;
+}
+
+/* ------------------------------ 9. 星级评分 ------------------------------ */
+.star-list {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.star-list input[type="radio"] {
+    margin-right: 4px;
+}
+
+.star-list label,
+.star-list span {
+    color: #333333;
+    font-size: 14px;
+}
+
+.star-score {
+    color: #F39C12;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* ------------------------------ 10. 提示条 ------------------------------ */
+.msg-success,
+.msg-error,
+.msg-info {
+    display: block;
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.msg-success {
+    color: #1E8449;
+    background-color: #EAF7EF;
+    border: 1px solid #27AE60;
+}
+
+.msg-error {
+    color: #C0392B;
+    background-color: #FDECEA;
+    border: 1px solid #E74C3C;
+}
+
+.msg-info {
+    color: #245A96;
+    background-color: #E8F0FB;
+    border: 1px solid #2C6CB0;
+}
+
+/* 空提示：Label 未赋值时不占位 */
+.msg-success:empty,
+.msg-error:empty,
+.msg-info:empty {
+    display: none;
+}
+
+/* ------------------------------ 11. 统计卡片 ------------------------------ */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.stat-box {
+    padding: 20px;
+    background-color: #E8F0FB;
+    border: 1px solid #D6E2F2;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.stat-num {
+    display: block;
+    color: #2C6CB0;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.stat-label {
+    display: block;
+    margin-top: 8px;
+    color: #666666;
+    font-size: 12px;
+}
+
+/* ------------------------------ 12. 分页 ------------------------------ */
+.pager {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pager a,
+.pager span {
+    display: inline-block;
+    min-width: 32px;
+    height: 32px;
+    line-height: 30px;
+    padding: 0 8px;
+    color: #2C6CB0;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #D0D7E2;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+.pager a:hover {
+    background-color: #E8F0FB;
+    text-decoration: none;
+}
+
+.pager .pager-current {
+    color: #FFFFFF;
+    background-color: #2C6CB0;
+    border-color: #2C6CB0;
+}
+
+.pager-info {
+    margin-left: 8px;
+    color: #666666;
+    font-size: 12px;
+}
+
+/* ------------------------------ 13. 登录与注册页 ------------------------------ */
+.page-login {
+    background-color: #F5F7FA;
+}
+
+.login-container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 120px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.login-box {
+    width: 420px;
+    padding: 32px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.login-box .panel-title {
+    margin-bottom: 20px;
+}
+
+.login-box .input-text,
+.login-box .input-select {
+    width: 100%;
+}
+
+.login-box .btn-primary {
+    margin-top: 8px;
+}
+
+.login-tip {
+    margin-top: 16px;
+    color: #666666;
+    font-size: 12px;
+    text-align: center;
+}
+
+.login-tip a {
+    margin: 0 4px;
+}
